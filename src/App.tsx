@@ -1,5 +1,14 @@
+import Profile from "./components/Profile/Profile";
+import { ProfileProvider } from "./context/ProfileContext";
+
 function App() {
-    return <></>;
+    return (
+        <>
+            <ProfileProvider>
+                <Profile />
+            </ProfileProvider>
+        </>
+    );
 }
 
 export default App;

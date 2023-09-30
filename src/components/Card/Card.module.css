@@ -1,0 +1,13 @@
+.card {
+    width: 550px;
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+/* Card header */
+.card > div:first-of-type {
+    background-color: var(--secondary);
+    font-size: 21px;
+    font-weight: bold;
+}

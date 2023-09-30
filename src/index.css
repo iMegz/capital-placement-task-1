@@ -1,16 +1,78 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+@font-face {
+    font-family: "inter";
+    src: url("./fonts/inter.ttf");
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("./fonts/Poppins/Poppins-SemiBold.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("./fonts/Poppins/Poppins-Medium.ttf");
 }
 
 :root {
-    --cyan: #d0f7fa;
-    --green: #087b2f;
-    --green-hover: #087b2f10;
-    --dark-green: #00635b;
-    --red: #a80000;
-    --red-hover: #a8000010;
-    --gray: #979797;
-    --light-gray: #c4c4c4;
+    --primary: #087b2f;
+    --primary-hover: #087b2f08;
+    --primary-dark: #00635b;
+    --secondary: #d0f7fa;
+    --danger: #a80000;
+    --danger-hover: #a8000008;
+    --gray: #c4c4c4;
+    --light-gray: #d9d9d9;
+    --box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Input group */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: bold;
+}
+
+/* Form control */
+.form-control {
+    padding: 18px 21px !important;
+}
+
+.form-control:hover,
+.form-control:focus,
+.select:hover,
+.select:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px var(--primary-transparent) !important;
+}
+
+/* Number input */
+.form-control.ant-input-number-focused {
+    border-color: var(--primary) !important;
+    box-shadow: none !important;
+}
+
+/* Select */
+.select {
+    height: auto !important;
+}
+.select .ant-select-selector {
+    padding: 13px 20px !important;
+}
+
+.select:hover .ant-select-selector,
+.select.ant-select-focused .ant-select-selector {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px var(--primary-transparent) !important;
+    outline: transparent !important;
 }
