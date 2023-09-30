@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cyan: #d0f7fa;
+    --green: #087b2f;
+    --green-hover: #087b2f10;
+    --dark-green: #00635b;
+    --red: #a80000;
+    --red-hover: #a8000010;
+    --gray: #979797;
+    --light-gray: #c4c4c4;
+}
