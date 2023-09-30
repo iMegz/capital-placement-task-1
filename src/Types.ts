@@ -11,6 +11,15 @@ export type QuestionType =
     | "FileUpload"
     | "Video";
 
+export interface Action<ActionType> {
+    type: ActionType;
+    payload: any;
+}
+
+export interface Reducer<StateType, ActionType> {
+    (state: StateType, action: Action<ActionType>): StateType;
+}
+
 export interface ApplicationForm {
     data: {
         id: string;

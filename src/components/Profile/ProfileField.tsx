@@ -8,30 +8,20 @@ type ProfileField = React.FC<FieldProps>;
 interface FieldProps {
     title: string;
 }
+
 const ProfileField: ProfileField = ({ title }) => {
-    const { profile, setProfile } = useProfileContext();
+    const { profile, dispatch } = useProfileContext();
     const field = title as keyof Profile;
     const { mandatory, show } = profile[field] as ProfileTemplate;
 
+    // Setters
     function setMandatory({ target }: any) {
         const value: boolean = target.checked;
-        setProfile((state) => {
-            const newState = { ...state };
-            if (newState[field]) {
-                (newState[field] as ProfileTemplate).mandatory = value;
-            }
-            return { ...state };
-        });
+        dispatch({ type: "SET_MANDATORY", payload: { field, value } });
     }
 
     function setShow(value: boolean) {
-        setProfile((state) => {
-            const newState = { ...state };
-            if (newState[field]) {
-                (newState[field] as ProfileTemplate).show = value;
-            }
-            return { ...state };
-        });
+        dispatch({ type: "SET_SHOW", payload: { field, value } });
     }
 
     return (
