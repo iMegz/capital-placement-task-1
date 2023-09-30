@@ -1,18 +1,16 @@
 import { useProfileContext } from "../../context/ProfileContext";
 import { Checkbox, Switch } from "antd";
-import { Profile, ProfileTemplate } from "../../Types";
-import style from "./Profile.module.css";
+import { ProfileFieldKey } from "../../Types";
 
 type ProfileField = React.FC<FieldProps>;
 
 interface FieldProps {
-    title: string;
+    field: ProfileFieldKey;
 }
 
-const ProfileField: ProfileField = ({ title }) => {
-    const { profile, dispatch } = useProfileContext();
-    const field = title as keyof Profile;
-    const { mandatory, show } = profile[field] as ProfileTemplate;
+const ProfileField: ProfileField = ({ field }) => {
+    const { state, dispatch } = useProfileContext();
+    const { mandatory, show } = state[field];
 
     // Setters
     function setMandatory({ target }: any) {
@@ -25,9 +23,9 @@ const ProfileField: ProfileField = ({ title }) => {
     }
 
     return (
-        <div className={style.field}>
-            <span className={style["field-title"]}>{field}</span>
-            <div className={style["field-options"]}>
+        <div className="field">
+            <span className="field-title">{field}</span>
+            <div className="field-options">
                 <Checkbox checked={mandatory} onChange={setMandatory}>
                     Mandatory
                 </Checkbox>

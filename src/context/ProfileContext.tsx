@@ -1,15 +1,16 @@
 import { createContext, useContext, Dispatch, useReducer } from "react";
-import { Action, Profile, ProfileTemplate, Provider, Reducer } from "../Types";
+import { Action, Profile, ProfileFieldKey, Provider, Reducer } from "../Types";
 
-type ProfileContextProps = ProfileContext | undefined;
-
-interface ProfileContext {
-    profile: Profile;
+export interface ProfileContext {
+    state: Profile;
     dispatch: Dispatch<Action<ProfileActions>>;
 }
 
+type ProfileContextProps = ProfileContext | undefined;
+
 type ProfileReducer = Reducer<Profile, ProfileActions>;
 
+// Possible reducer actions
 type ProfileActions =
     | "SET_MANDATORY"
     | "SET_SHOW"
@@ -17,50 +18,53 @@ type ProfileActions =
     | "DEL_QUESTION"
     | "EDIT_QUESTION";
 
-const initState = {
+// Initial state
+const initState: Profile = {
     education: { mandatory: true, show: true },
     experience: { mandatory: true, show: true },
     resume: { mandatory: true, show: true },
     profileQuestions: [],
 };
 
+// Reducer
 const reducer: ProfileReducer = (state, { type, payload }) => {
     switch (type) {
         case "SET_MANDATORY": {
             // payload: {field:keyOfProfile, value:boolean}
-            const field = payload.field as keyof Profile;
+            const field: ProfileFieldKey = payload.field;
             const value: boolean = payload.value;
             const newState = { ...state };
-            if (newState) {
-                (newState[field] as ProfileTemplate).mandatory = value;
-            }
+            newState[field].mandatory = value;
             return newState;
         }
 
         case "SET_SHOW": {
             // payload: {field:keyOfProfile, value:boolean}
-            const field = payload.field as keyof Profile;
+            const field: ProfileFieldKey = payload.field;
             const value: boolean = payload.value;
             const newState = { ...state };
-            if (newState) {
-                (newState[field] as ProfileTemplate).show = value;
-            }
+            newState[field].show = value;
             return newState;
         }
     }
     return state;
 };
 
+// Context creation
+const ProfileContext = createContext<ProfileContextProps>(undefined);
+
+// Context provider
 export const ProfileProvider: Provider = (props) => {
-    const [profile, dispatch] = useReducer(reducer, initState);
+    const [state, dispatch] = useReducer(reducer, initState);
 
     return (
-        <ProfileContext.Provider value={{ profile, dispatch }}>
+        <ProfileContext.Provider value={{ state: state, dispatch }}>
             {props.children}
         </ProfileContext.Provider>
     );
 };
 
+// Context
 export function useProfileContext() {
     const context = useContext(ProfileContext);
     if (!context) {
@@ -68,5 +72,3 @@ export function useProfileContext() {
     }
     return context;
 }
-
-export const ProfileContext = createContext<ProfileContextProps>(undefined);

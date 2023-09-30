@@ -76,3 +76,36 @@
     box-shadow: 0 0 0 2px var(--primary-transparent) !important;
     outline: transparent !important;
 }
+
+/* Fields */
+.fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gray);
+}
+
+.field:last-of-type {
+    border-color: transparent;
+}
+
+.field-title {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.field-info {
+    margin-left: 2px;
+    font-weight: normal;
+}
+
+.field-options {
+    display: flex;
+    gap: 20px;
+}

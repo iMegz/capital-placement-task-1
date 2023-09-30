@@ -1,14 +1,15 @@
+import { ProfileFieldKey } from "../../Types";
 import Card from "../Card/Card";
-import style from "./Profile.module.css";
 import ProfileField from "./ProfileField";
 
-const fields = ["education", "experience", "resume"];
+const fields: ProfileFieldKey[] = ["education", "experience", "resume"];
+
 const Profile: React.FC = () => {
     return (
         <Card title="Profile">
-            <div className={style.profile}>
-                {fields.map((field) => {
-                    return <ProfileField key={field} title={field} />;
+            <div className="fields">
+                {fields.map((field: ProfileFieldKey) => {
+                    return <ProfileField key={field} field={field} />;
                 })}
             </div>
         </Card>

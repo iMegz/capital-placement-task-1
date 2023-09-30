@@ -11,6 +11,17 @@ export type QuestionType =
     | "FileUpload"
     | "Video";
 
+export type ExcludeField<T, key> = Exclude<keyof T, key>;
+
+export type ProfileFieldKey = ExcludeField<Profile, "profileQuestions">;
+
+export type PersonalInformationFieldKey = ExcludeField<
+    PersonalInformation,
+    "personalQuestions"
+>;
+
+export type CustomisedQuestions = QuestionTemplate[];
+
 export interface Action<ActionType> {
     type: ActionType;
     payload: any;
@@ -32,7 +43,7 @@ export interface ApplicationFormAttributes {
     coverImage?: string;
     personalInformation: PersonalInformation;
     profile?: Profile;
-    customisedQuestions?: QuestionTemplate[];
+    customisedQuestions?: CustomisedQuestions;
 }
 
 export interface PersonalInformation {
