@@ -1,5 +1,4 @@
 import { Checkbox, Switch } from "antd";
-import { PersonalInformationFieldKey } from "../../Types";
 import { usePersonalInformationContext } from "../../context/PersonalInformationContext";
 import { Field } from "./PersonalInformation";
 

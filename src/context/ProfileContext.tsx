@@ -1,5 +1,12 @@
 import { createContext, useContext, Dispatch, useReducer } from "react";
-import { Action, Profile, ProfileFieldKey, Provider, Reducer } from "../Types";
+import {
+    Action,
+    Profile,
+    ProfileFieldKey,
+    Provider,
+    QuestionActions,
+    Reducer,
+} from "../Types";
 
 export interface ProfileContext {
     state: Profile;
@@ -11,12 +18,7 @@ type ProfileContextProps = ProfileContext | undefined;
 type ProfileReducer = Reducer<Profile, ProfileActions>;
 
 // Possible reducer actions
-type ProfileActions =
-    | "SET_MANDATORY"
-    | "SET_SHOW"
-    | "ADD_QUESTION"
-    | "DEL_QUESTION"
-    | "EDIT_QUESTION";
+type ProfileActions = "SET_MANDATORY" | "SET_SHOW" | QuestionActions;
 
 // Initial state
 const initState: Profile = {

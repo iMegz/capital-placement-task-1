@@ -11,6 +11,12 @@ export type QuestionType =
     | "FileUpload"
     | "Video";
 
+export type QuestionActions =
+    | "ADD_QUESTION"
+    | "DEL_QUESTION"
+    | "EDIT_QUESTION"
+    | "SAVE_QUESTION";
+
 export type ExcludeField<T, key> = Exclude<keyof T, key>;
 
 export type ProfileFieldKey = ExcludeField<Profile, "profileQuestions">;
@@ -24,7 +30,7 @@ export type CustomisedQuestions = QuestionTemplate[];
 
 export interface Action<ActionType> {
     type: ActionType;
-    payload: any;
+    payload?: any;
 }
 
 export interface Reducer<StateType, ActionType> {
@@ -45,6 +51,8 @@ export interface ApplicationFormAttributes {
     profile?: Profile;
     customisedQuestions?: CustomisedQuestions;
 }
+
+export interface PersonalInformationFields {}
 
 export interface PersonalInformation {
     firstName: PersonalInformationTemplate;
@@ -78,7 +86,7 @@ export interface ProfileTemplate {
 
 export interface QuestionTemplate {
     id?: string;
-    type: QuestionType;
+    type: QuestionType | null;
     question: string;
     choices?: string[];
     maxChoice?: number;

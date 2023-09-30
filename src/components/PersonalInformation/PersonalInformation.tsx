@@ -1,5 +1,7 @@
 import { PersonalInformationFieldKey } from "../../Types";
+import { usePersonalInformationContext } from "../../context/PersonalInformationContext";
 import Card from "../Card/Card";
+import Questions from "../CustomQuestions/Questions";
 import PersonalInformationField from "./PersonalInformationField";
 
 export interface Field {
@@ -27,6 +29,8 @@ const fields: Field[] = [
 ];
 
 const PersonalInformation: React.FC = () => {
+    const context = usePersonalInformationContext();
+
     return (
         <Card title="Personal Information">
             <div className="fields">
@@ -39,6 +43,8 @@ const PersonalInformation: React.FC = () => {
                     );
                 })}
             </div>
+
+            <Questions context={context} />
         </Card>
     );
 };

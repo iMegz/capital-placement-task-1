@@ -4,6 +4,7 @@ import {
     PersonalInformation,
     PersonalInformationFieldKey,
     Provider,
+    QuestionActions,
     Reducer,
 } from "../Types";
 
@@ -20,12 +21,7 @@ type PersonalInformationReducer = Reducer<
 >;
 
 // Possible reducer actions
-type PersonalInformationActions =
-    | "SET_INTERNAL"
-    | "SET_SHOW"
-    | "ADD_QUESTION"
-    | "DEL_QUESTION"
-    | "EDIT_QUESTION";
+type PersonalInformationActions = "SET_INTERNAL" | "SET_SHOW" | QuestionActions;
 
 // Initial state
 const initState: PersonalInformation = {
