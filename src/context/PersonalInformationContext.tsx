@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import { createContext, useContext, Dispatch, useReducer } from "react";
 import {
     Action,
@@ -56,6 +57,35 @@ const reducer: PersonalInformationReducer = (state, { type, payload }) => {
             const newState = { ...state };
             console.log(newState, payload);
             newState[field].show = value;
+            return newState;
+        }
+
+        case "ADD_QUESTION": {
+            const id = uuidv4();
+            const newState = { ...state };
+            newState.personalQuestions = [
+                ...newState.personalQuestions!,
+                { question: "", type: null, id },
+            ];
+            return newState;
+        }
+
+        case "DEL_QUESTION": {
+            const newState = { ...state };
+            newState.personalQuestions = newState.personalQuestions?.filter(
+                ({ id }) => id !== payload
+            );
+            return newState;
+        }
+
+        case "SAVE_QUESTION": {
+            const newState = { ...state };
+            newState.personalQuestions = newState.personalQuestions?.map(
+                (question) => {
+                    if (question.id === payload.id) return payload.question;
+                    else return question;
+                }
+            );
             return newState;
         }
     }

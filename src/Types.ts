@@ -11,11 +11,7 @@ export type QuestionType =
     | "FileUpload"
     | "Video";
 
-export type QuestionActions =
-    | "ADD_QUESTION"
-    | "DEL_QUESTION"
-    | "EDIT_QUESTION"
-    | "SAVE_QUESTION";
+export type QuestionActions = "ADD_QUESTION" | "DEL_QUESTION" | "SAVE_QUESTION";
 
 export type ExcludeField<T, key> = Exclude<keyof T, key>;
 

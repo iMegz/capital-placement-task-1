@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 import { createContext, useContext, Dispatch, useReducer } from "react";
 import {
     Action,
@@ -46,6 +48,35 @@ const reducer: ProfileReducer = (state, { type, payload }) => {
             const value: boolean = payload.value;
             const newState = { ...state };
             newState[field].show = value;
+            return newState;
+        }
+
+        case "ADD_QUESTION": {
+            const id = uuidv4();
+            const newState = { ...state };
+            newState.profileQuestions = [
+                ...newState.profileQuestions!,
+                { question: "", type: null, id },
+            ];
+            return newState;
+        }
+
+        case "DEL_QUESTION": {
+            const newState = { ...state };
+            newState.profileQuestions = newState.profileQuestions?.filter(
+                ({ id }) => id !== payload
+            );
+            return newState;
+        }
+
+        case "SAVE_QUESTION": {
+            const newState = { ...state };
+            newState.profileQuestions = newState.profileQuestions?.map(
+                (question) => {
+                    if (question.id === payload.id) return payload.question;
+                    else return question;
+                }
+            );
             return newState;
         }
     }
