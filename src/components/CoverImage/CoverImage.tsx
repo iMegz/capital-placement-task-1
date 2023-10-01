@@ -1,10 +1,11 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 import { UploadOutlined, DeleteFilled } from "@ant-design/icons";
 import Card from "../Card/Card";
 import style from "./CoverImage.module.css";
+import { useAdditionalContext } from "../../context/AdditionalContext";
 
 const CoverImage: React.FC = () => {
-    const [image, setImage] = useState<string | null>(null);
+    const { state, dispatch } = useAdditionalContext();
 
     // Handlers
     function handleOnChange({ target }: ChangeEvent<HTMLInputElement>) {
@@ -28,14 +29,17 @@ const CoverImage: React.FC = () => {
             // Read the image file and display a preview
             const reader = new FileReader();
             reader.onload = () => {
-                setImage(reader.result as string);
+                dispatch({
+                    type: "SET_COVER_IMAGE",
+                    payload: reader.result as string,
+                });
             };
             reader.readAsDataURL(file);
         }
     }
 
     function handleOnClickDelete() {
-        setImage(null);
+        dispatch({ type: "SET_COVER_IMAGE", payload: "" });
     }
 
     // Renderers
@@ -62,7 +66,7 @@ const CoverImage: React.FC = () => {
     function renderPreview() {
         return (
             <div className={style.preview}>
-                <img src={image!} alt="cover image" />
+                <img src={state.coverImage} alt="cover image" />
                 <button
                     className={style["delete-image"]}
                     onClick={handleOnClickDelete}
@@ -75,7 +79,7 @@ const CoverImage: React.FC = () => {
 
     return (
         <Card title="Upload cover image">
-            {image ? renderPreview() : renderUploadButton()}
+            {state.coverImage ? renderPreview() : renderUploadButton()}
         </Card>
     );
 };

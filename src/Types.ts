@@ -22,8 +22,6 @@ export type PersonalInformationFieldKey = ExcludeField<
     "personalQuestions"
 >;
 
-export type CustomisedQuestions = QuestionTemplate[];
-
 export interface Action<ActionType> {
     type: ActionType;
     payload?: any;
@@ -45,7 +43,7 @@ export interface ApplicationFormAttributes {
     coverImage?: string;
     personalInformation: PersonalInformation;
     profile?: Profile;
-    customisedQuestions?: CustomisedQuestions;
+    customisedQuestions?: QuestionTemplate[];
 }
 
 export interface PersonalInformationFields {}

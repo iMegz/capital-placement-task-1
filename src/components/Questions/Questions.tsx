@@ -5,11 +5,12 @@ import { ProfileContext } from "../../context/ProfileContext";
 import { PersonalInformationContext } from "../../context/PersonalInformationContext";
 import { QuestionTemplate } from "../../Types";
 import Question from "./Question";
+import { AdditionalContext } from "../../context/AdditionalContext";
 
 type Questions = React.FC<QuestionsProps>;
 
 interface QuestionsProps {
-    context: ProfileContext | PersonalInformationContext;
+    context: ProfileContext | PersonalInformationContext | AdditionalContext;
 }
 
 const Questions: Questions = ({ context }) => {
@@ -17,6 +18,8 @@ const Questions: Questions = ({ context }) => {
     let questions: QuestionTemplate[] = [];
     if ("personalQuestions" in state) questions = state.personalQuestions!;
     else if ("profileQuestions" in state) questions = state.profileQuestions!;
+    else if ("customisedQuestions" in state)
+        questions = state.customisedQuestions!;
 
     // Handlers
     function handleAddQuestion() {

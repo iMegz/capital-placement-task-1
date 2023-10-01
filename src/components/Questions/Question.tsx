@@ -24,7 +24,7 @@ const Question: Question = (props) => {
         if (editMode) return <EditQuestion {...props} onSave={handleSave} />;
         else {
             return (
-                <div className={style["saved-question"]}>
+                <div className={`field ${style["saved-question"]}`}>
                     <span className={style.type}>{props.question.type}</span>
                     <div className={style.question}>
                         <span>{props.question.question}</span>

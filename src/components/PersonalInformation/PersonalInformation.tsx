@@ -1,7 +1,7 @@
 import { PersonalInformationFieldKey } from "../../Types";
 import { usePersonalInformationContext } from "../../context/PersonalInformationContext";
 import Card from "../Card/Card";
-import Questions from "../CustomQuestions/Questions";
+import Questions from "../Questions/Questions";
 import PersonalInformationField from "./PersonalInformationField";
 
 export interface Field {

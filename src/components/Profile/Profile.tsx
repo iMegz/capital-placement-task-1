@@ -1,7 +1,7 @@
 import { ProfileFieldKey } from "../../Types";
 import { useProfileContext } from "../../context/ProfileContext";
 import Card from "../Card/Card";
-import Questions from "../CustomQuestions/Questions";
+import Questions from "../Questions/Questions";
 import ProfileField from "./ProfileField";
 
 const fields: ProfileFieldKey[] = ["education", "experience", "resume"];

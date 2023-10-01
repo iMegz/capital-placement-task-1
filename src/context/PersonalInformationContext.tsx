@@ -61,6 +61,7 @@ const reducer: PersonalInformationReducer = (state, { type, payload }) => {
         }
 
         case "ADD_QUESTION": {
+            // payload: {}
             const id = uuidv4();
             const newState = { ...state };
             newState.personalQuestions = [
@@ -71,6 +72,7 @@ const reducer: PersonalInformationReducer = (state, { type, payload }) => {
         }
 
         case "DEL_QUESTION": {
+            // payload: string (id)
             const newState = { ...state };
             newState.personalQuestions = newState.personalQuestions?.filter(
                 ({ id }) => id !== payload
@@ -79,6 +81,7 @@ const reducer: PersonalInformationReducer = (state, { type, payload }) => {
         }
 
         case "SAVE_QUESTION": {
+            // payload: {id:string, question:QuestionTemplate}
             const newState = { ...state };
             newState.personalQuestions = newState.personalQuestions?.map(
                 (question) => {

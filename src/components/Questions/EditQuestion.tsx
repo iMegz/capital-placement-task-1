@@ -228,7 +228,7 @@ const EditQuestion: EditQuestion = ({ question, onDelete, onSave }) => {
     }
 
     return (
-        <div className={style["question-edit"]}>
+        <div className={`field ${style["question-edit"]}`}>
             {renderTypeSelect()}
             <div className="input-group">
                 <label htmlFor="question">Question</label>

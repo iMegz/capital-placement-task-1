@@ -87,8 +87,6 @@
     display: flex;
     justify-content: space-between;
     font-size: 16px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--gray);
     font-weight: bold;
 }
 
