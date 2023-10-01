@@ -1,22 +1,21 @@
 import Application from "./components/Application/Application";
-import Navbar from "./components/Navbar/NavBar";
-import { Layout, theme } from "antd";
-const { Header } = Layout;
+import Navbar from "./components/Navbar/Navbar";
+import { Layout } from "antd";
 import "./App.css";
+import Steps from "./components/Steps/Steps";
 
 function App() {
-    const {
-        token: { colorBgContainer },
-    } = theme.useToken();
-
     return (
         <Layout className="app">
             <Navbar />
-            {/* <Application /> */}
-
-            <Layout>
-                <Header style={{ padding: 0, background: colorBgContainer }} />
-            </Layout>
+            <div className="container">
+                <header className="header">
+                    <Steps />
+                </header>
+                <main className="main">
+                    <Application />
+                </main>
+            </div>
         </Layout>
     );
 }
