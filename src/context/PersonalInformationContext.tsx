@@ -55,7 +55,6 @@ const reducer: PersonalInformationReducer = (state, { type, payload }) => {
             const field: PersonalInformationFieldKey = payload.field;
             const value: boolean = payload.value;
             const newState = { ...state };
-            console.log(newState, payload);
             newState[field].show = value;
             return newState;
         }

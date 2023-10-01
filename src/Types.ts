@@ -1,4 +1,9 @@
-export type Provider = React.FC<React.PropsWithChildren>;
+export type Provider = React.FC<ProviderProps>;
+
+export interface ProviderProps {
+    children: React.ReactNode;
+    data?: Profile | PersonalInformation | AdditionalState;
+}
 
 export type QuestionType =
     | "Paragraph"
@@ -89,4 +94,9 @@ export interface QuestionTemplate {
     additionalInfo?: string;
     maxDuration?: number;
     maxDurationUnit?: "min" | "sec";
+}
+
+export interface AdditionalState {
+    coverImage?: string;
+    customisedQuestions?: QuestionTemplate[];
 }

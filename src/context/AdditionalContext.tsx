@@ -2,16 +2,11 @@ import { v4 as uuidv4 } from "uuid";
 import { createContext, useContext, Dispatch, useReducer } from "react";
 import {
     Action,
+    AdditionalState,
     Provider,
     QuestionActions,
-    QuestionTemplate,
     Reducer,
 } from "../Types";
-
-interface AdditionalState {
-    coverImage?: string;
-    customisedQuestions?: QuestionTemplate[];
-}
 
 export interface AdditionalContext {
     state: AdditionalState;

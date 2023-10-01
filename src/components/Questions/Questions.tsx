@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import style from "./Questions.module.css";
 import { ProfileContext } from "../../context/ProfileContext";
