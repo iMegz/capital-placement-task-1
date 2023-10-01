@@ -1,13 +1,23 @@
-import ApplicationFormAttributes from "./components/ApplicationFormAttributes/ApplicationFormAttributes";
-import ContextProvider from "./context/ContextProvider";
+import Application from "./components/Application/Application";
+import Navbar from "./components/Navbar/NavBar";
+import { Layout, theme } from "antd";
+const { Header } = Layout;
+import "./App.css";
 
 function App() {
+    const {
+        token: { colorBgContainer },
+    } = theme.useToken();
+
     return (
-        <>
-            <ContextProvider>
-                <ApplicationFormAttributes />
-            </ContextProvider>
-        </>
+        <Layout className="app">
+            <Navbar />
+            {/* <Application /> */}
+
+            <Layout>
+                <Header style={{ padding: 0, background: colorBgContainer }} />
+            </Layout>
+        </Layout>
     );
 }
 
