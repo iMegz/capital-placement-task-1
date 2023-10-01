@@ -49,7 +49,7 @@ For get request, the main `Application` component gets the data, split it, and d
 3. Cover image section had 2 different forms in the **figma design** and the **demo video**, I used the one in the video
 
 4. Some icons may not perfectly match the design, I could have :
-    - **Used custom SVGs** (_pros:_ Light, *cons: *Inconsistency with the rest)
+    - **Used custom SVGs** (_pros:_ Light, _cons:_Inconsistency with the rest)
     - **Used a bigger library** (_pros:_ Better consistency, _cons:_ Heavy)
       So I took a middle ground and used icons close to it
 
