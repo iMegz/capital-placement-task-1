@@ -14,7 +14,7 @@ const API =
 async function updateServer(data: ApplicationForm) {
     try {
         const response = await axios.put(API, data);
-        console.log(response.data);
+        console.log("Success", response);
     } catch (error) {
         console.log(error);
     }
@@ -22,13 +22,11 @@ async function updateServer(data: ApplicationForm) {
 
 const ApplicationFormAttributes = () => {
     const initialMount = useRef(true);
-    const applicationForm = useData();
+    useData(updateServer, !initialMount.current);
 
     useEffect(() => {
-        if (initialMount.current) initialMount.current = false;
-        else updateServer(applicationForm);
-        console.log(applicationForm);
-    }, [applicationForm]);
+        initialMount.current = false;
+    }, []);
 
     return (
         <div className={style["form-attributes"]}>
