@@ -1,8 +1,9 @@
-import Application from "./components/Application/Application";
 import Navbar from "./components/Navbar/Navbar";
 import { Layout } from "antd";
 import "./App.css";
 import Steps from "./components/Steps/Steps";
+import ContextProvider from "./context/ContextProvider";
+import Application from "./components/Application/Application";
 
 function App() {
     return (
@@ -13,7 +14,9 @@ function App() {
                     <Steps />
                 </header>
                 <main className="main">
-                    <Application />
+                    <ContextProvider>
+                        <Application />
+                    </ContextProvider>
                 </main>
             </div>
         </Layout>

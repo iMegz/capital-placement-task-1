@@ -22,7 +22,11 @@ type PersonalInformationReducer = Reducer<
 >;
 
 // Possible reducer actions
-type PersonalInformationActions = "SET_INTERNAL" | "SET_SHOW" | QuestionActions;
+type PersonalInformationActions =
+    | "INIT"
+    | "SET_INTERNAL"
+    | "SET_SHOW"
+    | QuestionActions;
 
 // Initial state
 const initState: PersonalInformation = {
@@ -41,6 +45,11 @@ const initState: PersonalInformation = {
 // Reducer
 const reducer: PersonalInformationReducer = (state, { type, payload }) => {
     switch (type) {
+        case "INIT": {
+            // payload: PersonalInformation
+            return payload;
+        }
+
         case "SET_INTERNAL": {
             // payload: {field:keyOfPersonalInformation, value:boolean}
             const field: PersonalInformationFieldKey = payload.field;

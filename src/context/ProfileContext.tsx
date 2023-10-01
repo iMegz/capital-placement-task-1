@@ -20,7 +20,7 @@ type ProfileContextProps = ProfileContext | undefined;
 type ProfileReducer = Reducer<Profile, ProfileActions>;
 
 // Possible reducer actions
-type ProfileActions = "SET_MANDATORY" | "SET_SHOW" | QuestionActions;
+type ProfileActions = "INIT" | "SET_MANDATORY" | "SET_SHOW" | QuestionActions;
 
 // Initial state
 const initState: Profile = {
@@ -33,6 +33,11 @@ const initState: Profile = {
 // Reducer
 const reducer: ProfileReducer = (state, { type, payload }) => {
     switch (type) {
+        case "INIT": {
+            // payload: Profile
+            return payload;
+        }
+
         case "SET_MANDATORY": {
             // payload: {field:keyOfProfile, value:boolean}
             const field: ProfileFieldKey = payload.field;

@@ -18,7 +18,7 @@ type AdditionalContextProps = AdditionalContext | undefined;
 type AdditionalReducer = Reducer<AdditionalState, AdditionalActions>;
 
 // Possible reducer actions
-type AdditionalActions = "SET_COVER_IMAGE" | QuestionActions;
+type AdditionalActions = "INIT" | "SET_COVER_IMAGE" | QuestionActions;
 
 // Initial state
 const initState: AdditionalState = {
@@ -29,6 +29,11 @@ const initState: AdditionalState = {
 // Reducer
 const reducer: AdditionalReducer = (state, { type, payload }) => {
     switch (type) {
+        case "INIT": {
+            // payload: AdditionalState
+            return payload;
+        }
+
         case "SET_COVER_IMAGE": {
             // payload: string
             return { ...state, coverImage: payload };
